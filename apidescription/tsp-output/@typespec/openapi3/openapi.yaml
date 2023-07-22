@@ -1,0 +1,995 @@
+openapi: 3.0.0
+info:
+  title: IETF Datatracker
+  version: 1.0.0
+tags: []
+paths:
+  /api/iesg/position:
+    post:
+      operationId: postIesgBallotPosition
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/iesgBallotPositionForm'
+  /api/meeting/session/video/url:
+    post:
+      operationId: meeting_postSessionVideoUrl
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/sessionVideoForm'
+  /api/meeting/{identifier}/agenda-data:
+    get:
+      operationId: meeting_getAgendaData
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/meeting/{identifier}/session/{session}/materials:
+    get:
+      operationId: meeting_getSessionMaterials
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: session
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/notify/meeting/bluesheets:
+    post:
+      operationId: notifySection_uploadBluesheets
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/notify/meeting/registration:
+    post:
+      operationId: notifySection_uploadMeetingRegistration
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/notify/session/attendees:
+    post:
+      operationId: notifySection_uploadSessionAttendees
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/notify/session/chatlog:
+    post:
+      operationId: notifySection_uploadSessionChatlog
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/notify/session/polls:
+    post:
+      operationId: notifySection_uploadSessionPolls
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/openid:
+    post:
+      operationId: submitAuthRequest
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/submission:
+    post:
+      operationId: uploadSubmission
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/submission/{identifier}/status:
+    get:
+      operationId: getSubmissionStatus
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/submit:
+    get:
+      operationId: submitDraft
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/v1/doc/docalias:
+    get:
+      operationId: docAliases_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/docAlias'
+                required:
+                  - meta
+                  - objects
+  /api/v1/doc/docalias/{identifier}:
+    get:
+      operationId: docAliases_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/docAlias'
+  /api/v1/doc/docevent:
+    get:
+      operationId: docEvents_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/docEvent'
+                required:
+                  - meta
+                  - objects
+  /api/v1/doc/docevent/{identifier}:
+    get:
+      operationId: docEvents_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/docEvent'
+  /api/v1/doc/document:
+    get:
+      operationId: docResources_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/document'
+                required:
+                  - meta
+                  - objects
+  /api/v1/doc/document/{identifier}:
+    get:
+      operationId: docResources_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/document'
+  /api/v1/doc/state:
+    get:
+      operationId: stateResources_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/state'
+                required:
+                  - meta
+                  - objects
+  /api/v1/doc/state/{identifier}:
+    get:
+      operationId: stateResources_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/state'
+  /api/v1/doc/statedocevent:
+    get:
+      operationId: stateDocEvents_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/stateDocEvent'
+                required:
+                  - meta
+                  - objects
+  /api/v1/doc/statedocevent/{identifier}:
+    get:
+      operationId: stateDocEvents_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/stateDocEvent'
+  /api/v1/group/events:
+    get:
+      operationId: groupEvents_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/groupEvent'
+                required:
+                  - meta
+                  - objects
+  /api/v1/group/events/{identifier}:
+    get:
+      operationId: groupEvents_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupEvent'
+  /api/v1/group/group:
+    get:
+      operationId: groupResources_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/group'
+                required:
+                  - meta
+                  - objects
+  /api/v1/group/group/{identifier}:
+    get:
+      operationId: groupResources_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/group'
+  /api/v1/group/milestones:
+    get:
+      operationId: groupMilestones_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/groupMilestone'
+                required:
+                  - meta
+                  - objects
+  /api/v1/group/milestones/{identifier}:
+    get:
+      operationId: groupMilestones_getitem
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupMilestone'
+  /api/v2/person/person:
+    get:
+      operationId: v2_exportPerson
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/version:
+    get:
+      operationId: get
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/version'
+components:
+  schemas:
+    docAlias:
+      type: object
+      properties:
+        document:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        resource_uri:
+          type: string
+      required:
+        - document
+        - id
+        - name
+        - resource_uri
+    docEvent:
+      type: object
+      properties:
+        by:
+          type: string
+        desc:
+          type: string
+        doc:
+          type: string
+        id:
+          type: integer
+          format: int64
+        resource_uri:
+          type: string
+        rev:
+          type: string
+        time:
+          type: string
+      required:
+        - by
+        - desc
+        - doc
+        - id
+        - resource_uri
+        - rev
+        - time
+    document:
+      type: object
+      properties:
+        abstract:
+          type: string
+        ad:
+          type: string
+        expires:
+          type: string
+        external_url:
+          type: string
+        group:
+          type: string
+        id:
+          type: integer
+          format: int64
+        intended_std_level:
+          type: string
+        internal_comments:
+          type: string
+        name:
+          type: string
+        note:
+          type: string
+        notify:
+          type: string
+        pages:
+          type: string
+        resource_uri:
+          type: string
+        rev:
+          type: string
+        rfc:
+          type: string
+        shepherd:
+          type: string
+        states:
+          type: array
+          items:
+            type: string
+        std_level:
+          type: string
+        stream:
+          type: string
+        submissions:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        time:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        uploaded_filename:
+          type: string
+        words:
+          type: string
+      required:
+        - abstract
+        - ad
+        - expires
+        - external_url
+        - group
+        - id
+        - intended_std_level
+        - internal_comments
+        - name
+        - note
+        - notify
+        - pages
+        - resource_uri
+        - rev
+        - rfc
+        - shepherd
+        - states
+        - std_level
+        - stream
+        - submissions
+        - tags
+        - time
+        - title
+        - type
+        - uploaded_filename
+        - words
+    group:
+      type: object
+      properties:
+        acronym:
+          type: string
+        ad:
+          type: string
+        charter:
+          type: string
+        comments:
+          type: string
+        description:
+          type: string
+        id:
+          type: integer
+          format: int64
+        list_archive:
+          type: string
+        list_email:
+          type: string
+        list_subscribe:
+          type: string
+        meeting_seen_as_area:
+          type: boolean
+        name:
+          type: string
+        parent:
+          type: string
+        resource_uri:
+          type: string
+        state:
+          type: string
+        time:
+          type: string
+        type:
+          type: string
+        unused_states:
+          type: array
+          items:
+            type: string
+        unused_tags:
+          type: array
+          items:
+            type: string
+        used_roles:
+          type: array
+          items:
+            type: string
+        uses_milestone_dates:
+          type: boolean
+      required:
+        - acronym
+        - ad
+        - charter
+        - comments
+        - description
+        - id
+        - list_archive
+        - list_email
+        - list_subscribe
+        - meeting_seen_as_area
+        - name
+        - parent
+        - resource_uri
+        - state
+        - time
+        - type
+        - unused_states
+        - unused_tags
+        - used_roles
+        - uses_milestone_dates
+    groupEvent:
+      type: object
+      properties:
+        desc:
+          type: string
+        group:
+          type: string
+        id:
+          type: integer
+          format: int64
+        resource_uri:
+          type: string
+        time:
+          type: string
+        title:
+          type: string
+      required:
+        - desc
+        - group
+        - id
+        - resource_uri
+        - time
+        - title
+    groupMilestone:
+      type: object
+      properties:
+        desc:
+          type: string
+        due:
+          type: string
+        group:
+          type: string
+        id:
+          type: integer
+          format: int64
+        resolved:
+          type: string
+        resource_uri:
+          type: string
+        state:
+          type: string
+        time:
+          type: string
+        title:
+          type: string
+      required:
+        - desc
+        - due
+        - group
+        - id
+        - resolved
+        - resource_uri
+        - state
+        - time
+        - title
+    iesgBallotPositionForm:
+      type: object
+      properties:
+        apikey:
+          type: string
+          description: (required) which is the personal API key hash
+        doc:
+          type: string
+          description: (required) which is the balloted document name
+        position:
+          type: string
+          description: >-
+            (required) which is the position slug, one of: yes, noobj, block,
+            discuss, abstain, recuse, norecord .
+        discuss:
+          type: string
+          description: (required if position is discuss) which is the discuss text
+        comment:
+          type: string
+          description: (optional) which is the comment text
+      required:
+        - apikey
+        - doc
+        - position
+        - discuss
+        - comment
+    meta:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+        next:
+          type: string
+        offset:
+          type: integer
+          format: int32
+        previous:
+          type: string
+        total_count:
+          type: integer
+          format: int32
+      required:
+        - limit
+        - next
+        - offset
+        - previous
+        - total_count
+    sessionVideoForm:
+      type: object
+      properties:
+        apikey:
+          type: string
+          description: (required) which is the personal API key hash
+        meeting:
+          type: string
+          description: (required) which is the meeting number
+        group:
+          type: string
+          description: (required) which is the group acronym
+        item:
+          type: string
+          description: >-
+            (required) which is the chronological sequence number of the session
+            (1 for a group's first session, 2 for the second, etc.)
+        url:
+          type: string
+          description: (required) which is the url that points to the video recording
+      required:
+        - apikey
+        - meeting
+        - group
+        - item
+        - url
+    state:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
+        desc:
+          type: string
+        order:
+          type: string
+        type_id:
+          type: string
+        used:
+          type: boolean
+        resource_uri:
+          type: string
+      required:
+        - id
+        - name
+        - slug
+        - desc
+        - order
+        - type_id
+        - used
+        - resource_uri
+    stateDocEvent:
+      type: object
+      properties:
+        desc:
+          type: string
+        doc:
+          type: string
+        id:
+          type: integer
+          format: int64
+        resource_uri:
+          type: string
+        state:
+          type: string
+        time:
+          type: string
+      required:
+        - desc
+        - doc
+        - id
+        - resource_uri
+        - state
+        - time
+    version:
+      type: object
+      properties:
+        version:
+          type: string
+        dump:
+          type: string
+      required:
+        - version
+        - dump
+servers:
+  - url: https://datatracker.ietf.org
+    description: default
+    variables: {}
