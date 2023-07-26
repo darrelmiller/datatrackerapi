@@ -84,6 +84,14 @@ namespace api {
 
             @route("statedocevent")
             interface stateDocEvents extends TPModel<stateDocEvent> {}
+
+            @route("dochistory")
+            interface docHistoryResources  {
+                op getlist( @query limit?: int32, 
+                            @query offset?: int32,
+                            @query doc:int64 ): listResource<docHistory>;
+            
+            }
         }
 
         @route("group")
@@ -109,7 +117,8 @@ namespace api {
 
 interface TPModel<T> {
     op getlist(@query limit?: int32, @query offset?: int32): listResource<T>;
-    @route("/{identifier}")
+
+    @route("{identifier}")
     op getitem(identifier: string): T;
 }
 

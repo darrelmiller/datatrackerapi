@@ -277,6 +277,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/docEvent'
+  /api/v1/doc/dochistory:
+    get:
+      operationId: docHistoryResources_getlist
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: doc
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/docHistory'
+                required:
+                  - meta
+                  - objects
   /api/v1/doc/document:
     get:
       operationId: docResources_getlist
@@ -638,6 +677,34 @@ components:
         - resource_uri
         - rev
         - time
+    docHistory:
+      type: object
+      properties:
+        doc:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        resource_uri:
+          type: string
+        rev:
+          type: string
+        time:
+          type: string
+        status:
+          type: array
+          items:
+            type: string
+      required:
+        - doc
+        - id
+        - name
+        - resource_uri
+        - rev
+        - time
+        - status
     document:
       type: object
       properties:
@@ -959,26 +1026,41 @@ components:
     stateDocEvent:
       type: object
       properties:
+        by:
+          type: string
         desc:
           type: string
         doc:
+          type: string
+        docevent_ptr:
           type: string
         id:
           type: integer
           format: int64
         resource_uri:
           type: string
+        rev:
+          type: string
         state:
+          type: string
+        state_type:
           type: string
         time:
           type: string
+        type:
+          type: string
       required:
+        - by
         - desc
         - doc
+        - docevent_ptr
         - id
         - resource_uri
+        - rev
         - state
+        - state_type
         - time
+        - type
     version:
       type: object
       properties:

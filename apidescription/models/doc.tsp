@@ -136,3 +136,13 @@ model state {
   used: boolean;
   resource_uri: string;
 }
+
+model docHistory {
+    doc: string;
+    id: int64;
+    name: string;
+    resource_uri: string;
+    rev: string;
+    time: string;
+    status: string[];
+}

@@ -1,0 +1,33 @@
+{
+  "descriptionHash": "EFF9849CFC178EF3527892938F9162D234257B7F592561818E7950A735051B5E1ED9AD975420114E28E5905F767A1E7D7B0B48648E1407351D528789E16338ED",
+  "descriptionLocation": "c:\\Users\\darrmi\\src\\github\\darrelmiller\\datatrackerapi\\docdiagram\\..\\apidescription\\tsp-output\\@typespec\\openapi3\\openapi.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.4.0",
+  "clientClassName": "IetfDatatrackerClient",
+  "clientNamespaceName": "Ietf.Datatracker",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "includeAdditionalData": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded"
+  ],
+  "includePatterns": [
+    "/api/v1/doc/dochistory",
+    "/api/v1/doc/document",
+    "/api/v1/doc/document/{identifier}"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
